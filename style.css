@@ -1,26 +1,622 @@
+/* ===== GLOBAL STYLES FOR ALL PAGES ===== */
+
+:root {
+    --mansion-gold: #D4AF37;
+    --mansion-dark: #0a0a0a;
+    --mansion-darker: #050505;
+    --mansion-gray: #1a1a1a;
+    --mansion-light: #e0e0e0;
+    --mansion-border: #333333;
+    --mansion-card: #111111;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--mansion-light);
+    min-height: 100vh;
+    background: var(--mansion-dark);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* ===== HOMEPAGE STYLES ===== */
+
+.container {
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
+}
+
+/* Homepage Header */
+.mansion-header {
+    text-align: center;
+    padding: 40px 20px 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--mansion-border);
+}
+
+.mansion-title-container {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.mansion-title-image {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+}
+
+.mansion-subtitle {
+    font-size: 1.1em;
+    color: #888;
+    font-style: italic;
+}
+
+/* Homepage Category Sections */
+.category-section {
+    margin-bottom: 60px;
+}
+
+.category-title {
+    font-size: 1.8em;
+    color: var(--mansion-light);
+    font-weight: 600;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--mansion-gold);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.category-icon {
+    color: var(--mansion-gold);
+    font-size: 1.2em;
+}
+
+/* Homepage Story Grid */
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Homepage Story Cards */
+.story-card {
+    background: var(--mansion-card);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--mansion-border);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
+.story-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--mansion-gold);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.story-image-container {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+    background: var(--mansion-darker);
+}
+
+.story-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.story-card:hover .story-image {
+    transform: scale(1.05);
+}
+
+/* Homepage Year Badge */
+.story-year {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(10, 10, 10, 0.8);
+    color: var(--mansion-gold);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9em;
+    border: 1px solid var(--mansion-gold);
+}
+
+/* Homepage Story Info */
+.story-info {
+    padding: 20px;
+    background: var(--mansion-card);
+}
+
+.story-name {
+    font-size: 1.2em;
+    color: var(--mansion-light);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.story-year-text {
+    font-size: 0.9em;
+    color: var(--mansion-gold);
+    font-weight: 600;
+}
+
+.story-status {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 10px;
+    background: var(--mansion-gold);
+    color: var(--mansion-dark);
+    font-size: 0.8em;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+/* ===== STORY PAGE STYLES ===== */
+
+.story-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Story Page Header */
+.story-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--mansion-border);
+}
+
+.story-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #888;
+    font-size: 0.9em;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--mansion-gold);
+    text-decoration: none;
+    border: 1px solid var(--mansion-border);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: var(--mansion-gold);
+    color: var(--mansion-dark);
+    border-color: var(--mansion-gold);
+}
+
+.story-page-year {
+    background: var(--mansion-gold);
+    color: var(--mansion-dark);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.story-page-title {
+    font-size: 2.5em;
+    color: var(--mansion-light);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.story-page-subtitle {
+    font-size: 1.2em;
+    color: #aaa;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.story-page-status {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--mansion-gold);
+    color: var(--mansion-dark);
+    font-size: 0.8em;
+    font-weight: 600;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+/* Story Page Cover */
+.story-cover-container {
+    max-width: 250px;
+    margin: 30px auto 40px;
+    text-align: center;
+}
+
+.story-cover {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--mansion-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Story Page Description */
+.story-description {
+    background: var(--mansion-darker);
+    border-radius: 8px;
+    padding: 30px;
+    margin: 40px 0;
+    border: 1px solid var(--mansion-border);
+    line-height: 1.8;
+}
+
+.story-description h3 {
+    color: var(--mansion-gold);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.story-description p {
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+/* Chapters Section */
+.chapters-section {
+    margin: 50px 0;
+}
+
+.section-title {
+    font-size: 1.5em;
+    color: var(--mansion-light);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--mansion-gold);
+    font-weight: 600;
+}
+
+.chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.chapter-card {
+    background: var(--mansion-darker);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid var(--mansion-border);
+    transition: all 0.3s ease;
+}
+
+.chapter-card:hover {
+    border-color: var(--mansion-gold);
+    transform: translateY(-5px);
+}
+
+.chapter-number {
+    color: var(--mansion-gold);
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.chapter-title {
+    font-size: 1.2em;
+    color: var(--mansion-light);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.chapter-read-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--mansion-gold);
+    text-decoration: none;
+    border: 1px solid var(--mansion-border);
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.chapter-read-button:hover {
+    background: var(--mansion-gold);
+    color: var(--mansion-dark);
+    border-color: var(--mansion-gold);
+}
+
+/* Story Page Navigation */
+.story-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--mansion-border);
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: transparent;
+    color: var(--mansion-light);
+    text-decoration: none;
+    border: 1px solid var(--mansion-border);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: var(--mansion-gold);
+    color: var(--mansion-dark);
+    border-color: var(--mansion-gold);
+}
+
+/* ===== SHARED COMPONENTS ===== */
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 80px;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 0.9em;
+    border-top: 1px solid var(--mansion-border);
+    background: var(--mansion-darker);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.footer-links a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.95em;
+}
+
+.footer-links a:hover {
+    color: var(--mansion-light);
+}
+
+/* Placeholder Images */
+.placeholder-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--mansion-darker), #1a1a1a);
+    color: #666;
+    padding: 20px;
+    text-align: center;
+}
+
+.placeholder-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 1200px) {
+    .story-grid, .chapters-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container, .story-container {
+        padding: 15px;
+    }
+    
+    .mansion-title-image {
+        max-width: 350px;
+    }
+    
+    .story-image-container {
+        height: 350px;
+    }
+    
+    .story-page-title {
+        font-size: 2em;
+    }
+    
+    .story-meta {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .chapters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .story-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .story-image-container {
+        height: 300px;
+    }
+    
+    .category-title, .section-title {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .mansion-title-image {
+        max-width: 280px;
+    }
+    
+    .story-image-container {
+        height: 350px;
+    }
+}
+
+/* ===== CHAPTER-SPECIFIC STYLES ===== */
+
+/* Chapter content formatting */
+.chapter-content {
+    line-height: 1.8;
+    font-size: 1.1em;
+    color: #ddd;
+    margin: 40px 0;
+}
+
+.chapter-epigraph {
+    background: var(--mansion-darker);
+    border-left: 4px solid var(--mansion-gold);
+    padding: 25px;
+    margin: 30px 0;
+    font-style: italic;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+.epigraph-author {
+    text-align: right;
+    margin-top: 15px;
+    color: var(--mansion-gold);
+    font-style: normal;
+}
+
+.dialogue-speaker {
+    color: var(--mansion-gold);
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.dialogue {
+    padding-left: 20px;
+    border-left: 2px solid #444;
+    margin-bottom: 20px;
     line-height: 1.6;
 }
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-li {
+
+.action-text {
+    font-style: italic;
+    color: #aaa;
     margin: 15px 0;
-    padding: 10px;
-    border-left: 4px solid #3498db;
-    background: #f8f9fa;
+    line-height: 1.6;
 }
-a {
+
+/* Quick fix for chapter button alignment */
+.chapter-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 180px; /* Ensure consistent height */
+}
+
+.chapter-read-button {
+    margin-top: auto; /* Push to bottom */
+    align-self: flex-start; /* Align left */
+}
+
+/* Chapter navigation specific */
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--mansion-border);
+}
+
+.chapter-nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    background: transparent;
+    color: var(--mansion-light);
     text-decoration: none;
-    color: #2c3e50;
-    font-size: 18px;
+    border: 1px solid var(--mansion-border);
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
+
+.chapter-nav-button:hover {
+    background: var(--mansion-gold);
+    color: var(--mansion-dark);
+    border-color: var(--mansion-gold);
+}
+
+/* Responsive for chapter pages */
+@media (max-width: 768px) {
+    .chapter-content {
+        font-size: 1em;
+    }
+    
+    .chapter-epigraph {
+        padding: 20px 15px;
+    }
+    
+    .chapter-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .chapter-nav-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+    
+        

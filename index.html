@@ -1,19 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sotheby's Mansion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sotheby's Mansion | Story Archive</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- NO MORE INLINE STYLES HERE -->
 </head>
 <body>
-    <header>
-        <h1>Reverse: 1999 transcript</h1>
-    </header>
-    <main>
-        <ul>
-            <li><a href="novels/this-is-tomorrow.html">This is tomorrow - Chapter 1</a></li>
-            <li><a href="novels/overlord-ch1.html">In Our Time - Chapter 1</a></li>
-        </ul>
-    </main>
-</body>
+    <div class="container">
+        <!-- Sotheby's Mansion Header -->
+        <header class="mansion-header">
+            <div class="mansion-title-container">
+                <img src="EP_E88B8FE88A99E6AF94E5BA9CE982B8_title.webp" 
+                     alt="Sotheby's Mansion" 
+                     class="mansion-title-image">
+            </div>
+            <div class="mansion-subtitle">Story Archive</div>
+        </header>
+        
+        <main>
+            <!-- Main Story Section -->
+            <section class="category-section">
+                <h2 class="category-title">
+                    Cốt truyện chính
+                </h2>
+                
+                <div class="story-grid">
+                    <!-- This is Tomorrow -->
+                    <a href="stories/this-is-tomorrow.html" class="story-card">
+                        <div class="story-image-container">
+                            <img src="assets/covers/this-is-tomorrow.png" alt="This is Tomorrow" class="story-image">
+                            <div class="story-year">1966</div>
+                        </div>
+                        <div class="story-info">
+                            <div class="story-name">This is Tomorrow</div>
+                            <div class="story-year-text">1966 - The Storm is coming.</div>
+                            <div class="story-status">Hoàn thành</div>
+                        </div>
+                    </a>
 
+                    <!-- In Our Time -->
+                    <a href="" class="story-card">
+                        <div class="story-image-container">
+                            <img src="assets/covers/in-our-time.png" alt="In Our Time" class="story-image">
+                            <div class="story-year">1929</div>
+                        </div>
+                        <div class="story-info">
+                            <div class="story-name">In Our Time</div>
+                            <div class="story-year-text">1929 - Leave the rest to me.</div>
+                            <div class="story-status">Chưa xong</div>
+                        </div>
+                    </a>
+                    
+                    <!-- Tender is the Night -->
+                    <a href="" class="story-card">
+                        <div class="story-image-container">
+                            <img src="assets/covers/tender-is-the-night.png" alt="Tender is the night" class="story-image">
+                            <div class="story-year">1929</div>
+                        </div>
+                        <div class="story-info">
+                            <div class="story-name">Tender is the Night</div>
+                            <div class="story-year-text">1929 · Don't forget me.</div>
+                            <div class="story-status">Chưa xong</div>
+                        </div>
+                    </a>
+
+                    <!-- Add more main stories here with the same structure -->
+                    
+                </div>
+            </section>
+            
+            <!-- Event Story Section -->
+            <section class="category-section">
+                <h2 class="category-title">
+                    Cốt truyện sự kiện
+                </h2>
+                
+                <div class="story-grid">
+                    <!-- Add more event stories here with the same structure -->
+                    
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>A curated archive of stories preserved within Sotheby's Mansion.</p>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-info-circle"></i> About the Archive</a>
+                <a href="#"><i class="fas fa-history"></i> Chronology</a>
+                <a href="#"><i class="fas fa-book"></i> Complete Index</a>
+            </div>
+            <p>All stories and related materials preserved for archival purposes.</p>
+            <p>© Sotheby's Mansion Archive</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Simple click tracking (optional)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.story-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const storyName = this.querySelector('.story-name').textContent;
+                    console.log('Navigating to:', storyName);
+                });
+            });
+        });
+    </script>
+</body>
 </html>
