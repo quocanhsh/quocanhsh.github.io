@@ -3,83 +3,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This is Tomorrow | Sotheby's Mansion</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>ma mi wo yao chi nai</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: black;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            border-radius: 5px;
+            border: 2px solid black;
+            overflow: hidden;
+        }
+        
+        header {
+            background-color: black;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 2px solid black;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            font-size: 1rem;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+        
+        .demo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .element-card {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+        
+        .element-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .element-demo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            min-height: 100px;
+            justify-content: center;
+        }
+        
+        .element-explanation {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border: 1px solid #eee;
+        }
+        
+        .element-explanation code {
+            background-color: black;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        /* Custom tooltip styling for better visibility */
+        [title] {
+            position: relative;
+        }
+        
+        [title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: black;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            z-index: 100;
+            margin-top: 8px;
+            border: 1px solid black;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        [title]:hover::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-bottom-color: black;
+            margin-top: 2px;
+            z-index: 101;
+        }
+        
+        p[title] {
+            font-size: 1.1rem;
+            padding: 12px 25px;
+            background-color: white;
+            color: black;
+            border-radius: 3px;
+            cursor: pointer;
+            border: 1px solid black;
+            font-weight: normal;
+            display: inline-block;
+        }
+        
+        p[title]:hover {
+            background-color: black;
+            color: white;
+        }
+        
+        button[title] {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.2s;
+        }
+        
+        button[title]:hover {
+            background-color: black;
+            color: white;
+        }
+        
+        abbr[title] {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+            border-bottom: 2px dotted black;
+            padding: 5px;
+            cursor: help;
+        }
+        
+        .hint {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+            font-style: normal;
+            font-size: 0.9rem;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+        
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: black;
+            padding: 15px 25px;
+            border-radius: 3px;
+            border: 2px solid black;
+            z-index: 1000;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.3s ease;
+        }
+        
+        .tooltip-test {
+            text-align: center;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            max-width: 500px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: black;
+            color: white;
+            font-size: 0.9rem;
+            border-top: 2px solid black;
+        }
+        
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .element-card {
+                padding: 15px;
+            }
+            
+            [title]:hover::after {
+                font-size: 12px;
+                padding: 6px 10px;
+                white-space: normal;
+                max-width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="story-container">
-        <!-- Story Header -->
-        <header class="story-header">
-            <div class="story-meta">
-                <a href="../index.html" class="back-button">
-                    <i class="fas fa-arrow-left"></i> Quay về
-                </a>
-                <div class="story-page-year">1966</div>
-            </div>
-            
-            <h1 class="story-page-title">This is Tomorrow</h1>
-            <div class="story-page-subtitle">"The Storm is coming."</div>
-            <div class="story-page-status">Hoàn thành</div>
+    <div class="container">
+        <header>
+            <h1>ma mi wo yao chi nai</h1>
+            <p class="subtitle">HTML Title Attribute Demonstration</p>
         </header>
         
-        <!-- Story Cover -->
-        <div class="story-cover-container">
-            <img src="../assets/covers/this-is-tomorrow.png" 
-                 alt="This is Tomorrow" 
-                 class="story-cover">
-        </div>
-        
-        <!-- Story Description -->
-        <section class="story-description">
-            <h3>Tổng quan cốt chuyện</h3>
-            <p>-------</p>
-            <p>-------</p>
-        </section>
-        
-        <!-- Chapters Navigation -->
-        <section class="chapters-section">
-            <h2 class="section-title">Chương truyện</h2>
-            <div class="chapters-grid">
-                <!-- Chapter 1 -->
-                <div class="chapter-card">
-                    <div class="chapter-card-content">
-                        <div class="chapter-number">Chương 1</div>
-                        <h3 class="chapter-title">Rock 'n' Roll Radio</h3>
-                        <p>Regulus vĩ đại</p>
-                    </div>
-                    <a href="../chapters/this-is-tomorrow/chapter-1.html" class="chapter-read-button">
-                        Đọc chương
-                    </a>
-                </div>
-                
-                <!-- Chapter 2 -->
-                <div class="chapter-card">
-                    <div class="chapter-card-content">
-                        <div class="chapter-number">Chương 2</div>
-                        <h3 class="chapter-title">---</h3>
-                        <p>---</p>
-                    </div>
-                    <a href="" class="chapter-read-button">
-                        Đọc chương
-                    </a>
-                </div>
-                
-                <!-- Add more chapters as needed -->
+        <div class="content">
+            <div class="intro">
+                <p>The <code>title</code> attribute provides additional information about an element, displayed as a tooltip on hover.</p>
+                <p><strong>Hover over each element below to see the tooltips appear clearly.</strong></p>
             </div>
-        </section>
-        
-        <!-- Simple Back Navigation -->
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="../index.html" class="back-button" style="padding: 12px 30px;">
-                <i class="fas fa-home"></i> Về trang chủ
-            </a>
+            
+            <!-- Tooltip test area -->
+            <div class="tooltip-test">
+                <p><strong>Test the elements:</strong> Hover over each one for 1-2 seconds to see the tooltip</p>
+            </div>
+            
+            <div class="demo-section">
+                <!-- Paragraph Element -->
+                <div class="element-card">
+                    <div class="element-title">
+                        <h2>Paragraph with Title</h2>
+                    </div>
+                    
+                    <div class="element-demo">
+                        <p title="This text appears on hover">Hover over me</p>
+                    </div>
+                    
+                    <div class="element-explanation">
+                        <p>This paragraph has a <code>title</code> attribute: <code>title="This text appears on hover"</code>.</p>
+                        <p><strong>Expected tooltip:</strong> "This text appears on hover"</p>
+                    </div>
+                </div>
+                
+                <!-- Button Element -->
+                <div class="element-card">
+                    <div class="element-title">
+                        <h2>Button with Title</h2>
+                    </div>
+                    
+                    <div class="element-demo">
+                        <button title="Click to submit your form">Submit</button>
+                    </div>
+                    
+                    <div class="element-explanation">
+                        <p>This button has a <code>title</code> attribute: <code>title="Click to submit your form"</code>.</p>
+                        <p><strong>Expected tooltip:</strong> "Click to submit your form"</p>
+                    </div>
+                </div>
+                
+                <!-- Abbreviation Element -->
+                <div class="element-card">
+                    <div class="element-title">
+                        <h2>Abbreviation with Title</h2>
+                    </div>
+                    
+                    <div class="element-demo">
+                        <abbr title="HyperText Markup Language">HTML</abbr>
+                    </div>
+                    
+                    <div class="element-explanation">
+                        <p>This abbreviation has a <code>title</code> attribute: <code>title="HyperText Markup Language"</code>.</p>
+                        <p><strong>Expected tooltip:</strong> "HyperText Markup Language"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hint">
+                <p><strong>Note:</strong> Hover over each element for 1-2 seconds to see the tooltip. On mobile devices, you may need to tap and hold.</p>
+                <p>If tooltips don't appear, try moving your mouse slightly while hovering.</p>
+            </div>
         </div>
         
         <footer>
-            <p>© Sotheby's Mansion Archive | This is Tomorrow Story Page</p>
-            <p>All content preserved for archival and educational purposes.</p>
+            <p>shshshsh</p>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.querySelector('button[title]');
+            
+            button.addEventListener('click', function() {
+                // Create a message element
+                const message = document.createElement('div');
+                message.className = 'message';
+                message.textContent = 'Button Clicked! shshshsh';
+                document.body.appendChild(message);
+                
+                // Show the message
+                setTimeout(() => {
+                    message.style.opacity = '1';
+                    message.style.transform = 'translateX(0)';
+                }, 10);
+                
+                // Remove message after 3 seconds
+                setTimeout(() => {
+                    message.style.opacity = '0';
+                    message.style.transform = 'translateX(100px)';
+                    
+                    setTimeout(() => {
+                        if (document.body.contains(message)) {
+                            document.body.removeChild(message);
+                        }
+                    }, 300);
+                }, 3000);
+                
+                // Button click animation
+                this.style.backgroundColor = 'black';
+                this.style.color = 'white';
+                this.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                    this.style.color = '';
+                    this.style.transform = '';
+                }, 200);
+            });
+            
+            // Add visual feedback for all elements with title
+            const titleElements = document.querySelectorAll('[title]');
+            
+            titleElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    // Add a subtle visual indicator
+                    if (this.tagName === 'P') {
+                        this.style.boxShadow = '0 0 0 2px rgba(0,0,0,0.2)';
+                    } else if (this.tagName === 'ABBR') {
+                        this.style.borderBottomColor = '#666';
+                        this.style.color = '#333';
+                    }
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    // Remove visual indicator
+                    if (this.tagName === 'P') {
+                        this.style.boxShadow = '';
+                    } else if (this.tagName === 'ABBR') {
+                        this.style.borderBottomColor = 'black';
+                        this.style.color = 'black';
+                    }
+                });
+            });
+            
+            // Test function to ensure tooltips work
+            console.log("Page loaded. Hover over elements to see tooltips.");
+        });
+    </script>
 </body>
 </html>
